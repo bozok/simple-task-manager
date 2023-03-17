@@ -1,15 +1,15 @@
 import { FaRegEdit, FaCheckDouble, FaRegTrashAlt } from "react-icons/fa";
-const Task = () => {
+const Task = ({ task, index, deleteTask, getSingleTask, setToComplete }) => {
   return (
-    <div className="task">
+    <div className={task.completed ? "task completed" : "task"}>
       <p>
-        <b>1.</b>
-        Task 1
+        <b>{index + 1}. </b>
+        {task.name}
       </p>
       <div className="task-icons">
-        <FaCheckDouble color="green" />
-        <FaRegEdit color="purple" />
-        <FaRegTrashAlt color="red" />
+        <FaCheckDouble color="green" onClick={() => setToComplete(task)} />
+        <FaRegEdit color="purple" onClick={() => getSingleTask(task)} />
+        <FaRegTrashAlt color="red" onClick={() => deleteTask(task._id)} />
       </div>
     </div>
   );
